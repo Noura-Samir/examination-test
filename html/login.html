@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Science Exam</title>
+    <link rel="stylesheet" href="../css/signUpLogin.css">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">SCIENCE EXAM</div>
+    <h2>Login</h2>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="name">User Name:</label>
+        <input type="text" id="name" placeholder="Enter your username" >
+        <span id="loginUsernameError" class="error"></span>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter your password" >
+        <span id="loginPasswordError" class="error"></span>
+      </div>
+      
+      <button type="submit">Login</button>
+    </form>
+    
+    <div class="signup-link">
+      Don't have an account? <a href="signUp.html">Sign up</a>
+    </div>
+  </div>
+
+  <script src="../js/login.js"></script>
+</body>
+</html>

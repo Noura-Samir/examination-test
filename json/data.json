@@ -1,0 +1,37 @@
+[
+    {
+      "question": "What is the largest planet in the solar system?",
+      "choices": ["Earth", "Saturn", "Jupiter", "Mars"],
+      "correctAnswer": "Jupiter"
+    },
+    {
+      "question": "Which planet is known as the Red Planet?",
+      "choices": ["Venus", "Mars", "Mercury", "Neptune"],
+      "correctAnswer": "Mars"
+    },
+    {
+      "question": "How many planets are in the solar system?",
+      "choices": [
+        "7", "8", "9", "10"
+      ],
+      "correctAnswer": "8"
+    },
+    {
+      "question": "Who was the first human in space?",
+      "choices": ["Neil Armstrong", "Yuri Gagarin", "Elon Musk", "Buzz Aldrin"],
+      "correctAnswer": "Yuri Gagarin"
+    },
+    {
+      "question": "What is the name of Earth's natural satellite?",
+      "choices": ["Titan", "The Moon", "Europa", "Io"],
+      "correctAnswer": "The Moon"
+    },
+    {
+      "question": "Which planet has rings around it?",
+      "choices": [
+        "Earth", "Venus", "Mars", "Saturn"
+      ],
+      "correctAnswer": "Saturn"
+    }
+  ]
+  
