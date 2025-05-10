@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Failed</title>
+    <link rel="stylesheet" href="../css/res.css">
+    <style>
+        .sad-character {
+            width: 120px;
+            height: 120px;
+            margin: 0.5rem auto;
+            display: block;
+            object-fit: contain;
+        }
+        
+        .result-heading {
+            margin-bottom: 0.5rem;
+        }
+        
+        .failed {
+            color: var(--failed-color);
+            text-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container" id="result-container">
+        <div class="logo">SCIENCE EXAM</div>
+        <h1 class="result-heading failed" id="result-heading">Sorry!</h1>
+        <p class="failed">Good luck next time</p>
+        
+        <img src="failure-removebg-preview.png" alt="Sad character" class="sad-character">
+        
+        <div class="result-details" style="margin-bottom: 0.8rem;">
+            <p class="score-text" id="score"></p>
+            <p class="percentage-text" id="percentage" style="margin-bottom: 0;"></p>
+        </div>
+        
+        <a href="ques.html" class="try-again-btn" style="margin-top: 0.5rem; padding: 0.7rem;">Try Again</a>
+        <a href="login.html" class="home-btn" style="margin-top: 0.5rem; padding: 0.7rem;">Back to Home</a>
+    </div>
+
+    <script src="../js/failed.js"></script>
+</body>
+</html>
