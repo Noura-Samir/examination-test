@@ -37,7 +37,7 @@ const clearLoginErrors = () => {
 
   if (userFound) {
     clearLoginErrors();
-    window.location.href = '../html/start.html'; 
+    window.location.href = 'html/start.html'; 
   } else {
     const usernameExists = users.some(user => user.userName === loginUsername);
     const passwordMatches = users.some(user => user.password === loginPassword);
