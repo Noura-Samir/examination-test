@@ -79,7 +79,7 @@ document.getElementById('signUp').addEventListener('submit', e => {
     document.getElementById('signUp').reset();
     
     setTimeout(() => {
-      window.location.href = '../html/login.html';
+      window.location.href = '../index.html';
     }, 1000);
   }
 });
