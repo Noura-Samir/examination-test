@@ -1,0 +1,225 @@
+:root {
+    --container-bg: rgba(20, 20, 25, 0.8);
+    --text-color: #ffffff;
+    --secondary-text: #a0a0c0;
+    --accent-color: #4da6ff;
+    --input-bg: rgba(255, 255, 255, 0.1);
+    --button-bg: #0d6efd;
+    --button-hover: #084cb4;
+    --success-color: #4caf50;
+    --failed-color: #ff6b6b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-image: url(..img/bg.jpg);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+}
+
+.result-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--container-bg);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(85, 211, 255, 0.5);
+    opacity: 0.9;
+    text-align: center;
+    overflow: hidden;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 0.8rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    letter-spacing: 2px;
+}
+
+.result-heading {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    letter-spacing: 1px;
+}
+
+.success {
+    color: var(--success-color);
+    text-shadow: 0 0 15px rgba(76, 175, 80, 0.7);
+}
+
+.failed {
+    color: var(--failed-color);
+    text-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+}
+
+.result-details {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(77, 166, 255, 0.2);
+}
+
+.score-text, .percentage-text {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.score-text {
+    font-weight: bold;
+}
+
+.percentage-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.percentage-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-left: 0.3rem;
+}
+
+.try-again-btn, .home-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background-color:#126688;
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.7rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.try-again-btn:hover, .home-btn:hover {
+    background-color: #66CEFF;
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.6);
+    transform: translateY(-2px);
+}
+
+.home-btn {
+    margin-top: 0.7rem;
+}
+
+.result-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+ .sad-character {
+            width: 120px;
+            height: 120px;
+            margin: 0.5rem auto;
+            display: block;
+            object-fit: contain;
+        }
+        
+        .result-heading {
+            margin-bottom: 0.5rem;
+        }
+        
+        .failed {
+            color: var(--failed-color);
+            text-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+        }
+
+@media (max-width: 768px) {
+    .result-container {
+        width: 90%;
+        padding: 1.5rem;
+    }
+    
+    .result-heading {
+        font-size: 2rem;
+    }
+    
+    .result-details {
+        padding: 1.2rem;
+    }
+    
+    .score-text, .percentage-text {
+        font-size: 1.2rem;
+    }
+    
+    .percentage-value {
+        font-size: 2rem;
+    }
+    
+    .result-image {
+        max-width: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .result-container {
+        width: 95%;
+        padding: 1rem;
+    }
+    
+    .result-heading {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .result-details {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .score-text {
+        font-size: 1rem;
+    }
+    
+    .percentage-text {
+        font-size: 1.4rem;
+    }
+    
+    .percentage-value {
+        font-size: 1.8rem;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .try-again-btn, .home-btn {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+    
+    .result-image {
+        max-width: 140px;
+    }
+}
+
