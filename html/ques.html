@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam</title>
+  <link rel="stylesheet" href="../css/ques.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <div id="startScreen">
+    <button id="startButton">Ready</button>
+  </div>
+
+  <div class="container exam-container">
+    <button id="flag-btn" class="flag-btn" title="Flag Question">
+      <i class="fas fa-flag"></i>
+    </button>
+    <div class="logo">SCIENCE EXAM</div>
+    <div id="timer" class="timer">01:60</div>
+    <div id="exam-container" class="question-content"></div>
+    <div class="controls-container">
+      <div class="button-group">
+        <button id="prev-btn" class="nav-btn">Previous</button>
+        <button id="next-btn" class="nav-btn">Next</button>
+        <button id="sub-btn" class="submit-btn" disabled>Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmExitModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-icon">
+          <i class="fas fa-power-off"></i>
+        </div>
+        <h2 class="modal-title">Confirm Exit from Exam</h2>
+      </div>
+      <div class="modal-body">
+        <div class="modal-message">
+          <p class="warning-text">Warning!</p>
+          <p class="message-text">
+            Are you sure you want to exit the exam?<br>
+            The exam will be ended and your final score will be calculated.
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelExitBtn" class="modal-button cancel">
+          <i class="fas fa-times"></i>
+          <span>Return to Exam</span>
+        </button>
+        <button id="confirmExitBtn" class="modal-button confirm">
+          <i class="fas fa-check"></i>
+          <span>End Exam</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/qus.js"></script>
+</body>
+</html>
