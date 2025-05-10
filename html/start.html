@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Exam</title>
+<link rel="stylesheet" href="../css/signUpLogin.css">    
+   
+</head>
+<body>
+    <div class="container">
+    <div id="startScreen">
+        
+        <h1 class="exam-title">SCIENCE EXAM</h1>
+        
+        <div class="exam-info">
+            <div class="info-item"style="text-align: center;">
+                <span class="info-text">Duration: 2 minutes - Total Questions: 6</span>
+            </div>
+            
+            <div class="info-item" style="text-align: center; margin: 0.6rem;">
+                <span class="info-text">Passing Score: 50%</span>
+            </div>
+            <div class="info-item"style="text-align: center;">
+                <span class="info-text">Switching tabs is not allowed</span>
+            </div>
+        </div>
+
+        <button id="startButton">Start Exam</button>
+        
+        <p class="warning-text" style="text-align: center; margin-top: 0.6rem;">
+            Warning: The exam will start in fullscreen mode. Do not try to exit until you finish.
+        </p>
+    </div>
+    </div>
+
+    <script>
+        document.getElementById('startButton').addEventListener('click', function() {
+            window.location.href = '../html/ques.html';
+        });
+    </script>
+</body>
+</html>
