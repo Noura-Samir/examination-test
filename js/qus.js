@@ -314,15 +314,9 @@ document.getElementById('confirmExitBtn').addEventListener('click', () => {
   endQuiz();
 });
 
-document.getElementById('cancelExitBtn').addEventListener('click', () => {
+  document.getElementById('cancelExitBtn').addEventListener('click', () => {
   document.getElementById('confirmExitModal').style.display = 'none';
-
-  const elem = document.documentElement;
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) {
-    elem.webkitRequestFullscreen();
-  }
+  enterFullscreen();
 });
 
 document.addEventListener('fullscreenchange', handleFullscreenChange);

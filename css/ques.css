@@ -151,7 +151,6 @@ input:focus {
 
 .question-block input[type="radio"] {
     appearance: none;
-    -webkit-appearance: none;
     width: 18px;
     height: 18px;
     border: 2px solid var(--secondary-text);
