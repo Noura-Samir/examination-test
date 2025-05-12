@@ -149,7 +149,6 @@ button:hover {
     color: var(--accent-color);
 }
 
-/* Login page specific styles */
 .login-box {
     width: 100%;
 }

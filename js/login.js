@@ -5,7 +5,7 @@ const clearLoginErrors = () => {
     setLoginError('loginPassword', '');
     
   };
-  document.getElementById('loginForm').addEventListener('submit', e => {
+    getLoginData('loginForm').addEventListener('submit', e => {
     e.preventDefault();
     clearLoginErrors();
 
@@ -30,7 +30,7 @@ const clearLoginErrors = () => {
 
   const users = JSON.parse(localStorage.getItem('users')) || [];
 
-  const userFound = users.find(
+  const userFound = users.some(
     user => user.userName === loginUsername && user.password === loginPassword
   )
 
@@ -52,7 +52,7 @@ const clearLoginErrors = () => {
       hasError=true;
     } 
     if(!hasError) {
-      setLoginError('loginUsername', 'Username or password or email is incorrect!');
+      setLoginError('loginUsername', 'Username or password is incorrect!');
     }
   }
 });

@@ -2,13 +2,16 @@ const getData = id => document.getElementById(id);
 const setErrors = (id, message) => getData(id + 'Error').textContent = message;
 const clearErrors = () =>
   ['userName', 'email', 'password', 'confirmPassword'].forEach(id => setErrors(id, ''));
+const signUp=getData("signUp");
 
 const addLiveValidation = () => {
-  getData('userName').addEventListener('input', () => setErrors('userName', ''));
-  getData('email').addEventListener('input', () => setErrors('email', ''));
-  getData('password').addEventListener('input', () => setErrors('password', ''));
-  getData('confirmPassword').addEventListener('input', () => setErrors('confirmPassword', ''));
+userName.addEventListener('input', () => setErrors('userName', ''));
+email.addEventListener('input', () => setErrors('email', ''));
+password.addEventListener('input', () => setErrors('password', ''));
+confirmPassword.addEventListener('input', () => setErrors('confirmPassword', ''));
 };
+  addLiveValidation();
+
   
 const isValidEmail = email =>
   /^[A-Za-z0-9._%+-]+@(gmail|yahoo)\.com$/.test(email);
@@ -19,15 +22,16 @@ const isStrongPassword = pass =>
 const isValidUserName = userName =>
   /^[A-Za-z\d_]{4,}$/.test(userName);
 
-document.getElementById('signUp').addEventListener('submit', e => {
+signUp.addEventListener('submit', e => {
   e.preventDefault();
   clearErrors();
+  
+const userName = getData('userName').value.trim();
+const email = getData('email').value.trim();
+const password = getData('password').value;
+const confirmPassword = getData('confirmPassword').value;
 
-  const userName = getData('userName').value.trim();
-  const email = getData('email').value.trim();
-  const password = getData('password').value;
-  const confirmPassword = getData('confirmPassword').value;
-
+  
   let isValid = true;
 
   if (!userName) {
@@ -62,24 +66,24 @@ document.getElementById('signUp').addEventListener('submit', e => {
     isValid = false;
   }
   
-  addLiveValidation();
 
   if (isValid) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    const exists = users.some(user => user.userName === userName);
-
-    if (exists) {
+    const userNameExists = users.some(user => user.userName === userName );
+    if (userNameExists) {
       setErrors('userName', 'Username already exists!');
       return;
     }
-    
+    const emailExists = users.some(user => user.email===email);
 
-    users.push({ userName, email, password });
-    localStorage.setItem('users', JSON.stringify(users));
-    document.getElementById('signUp').reset();
-    
-    setTimeout(() => {
+    if (emailExists) {
+      setErrors('email', 'Email already exists!');
+      return;
+    }
+
+  users.push({ userName, email, password });
+  localStorage.setItem('users', JSON.stringify(users));
+  signUp.reset();
       window.location.href = '../index.html';
-    }, 1000);
   }
 });

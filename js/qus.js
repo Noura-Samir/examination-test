@@ -1,28 +1,28 @@
-let timeLeft=120;
+let timeLeft = 120;
 
-const flagBtn=document.getElementById('flag-btn')
+const flagBtn = document.getElementById('flag-btn')
 const submitBtn = document.getElementById('sub-btn');
 const nextBtn = document.getElementById('next-btn');
 const prevBtn = document.getElementById('prev-btn');
-const _timer=document.getElementById('timer');
-const countDown=setInterval(()=>{
+const _timer = document.getElementById('timer');
+const countDown = setInterval(() => {
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
   _timer.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-    if(timeLeft===30){
-        _timer.style.color = 'red';
-    }
-    timeLeft--;
-    if(timeLeft<0){
-        clearInterval(countDown);
-        location.replace("../html/timeOut.html");
-    }
-},1000);
+  if (timeLeft === 30) {
+    _timer.style.color = 'red';
+  }
+  timeLeft--;
+  if (timeLeft < 0) {
+    clearInterval(countDown);
+    location.replace("../html/timeOut.html");
+  }
+}, 1000);
 
 let currentQuestionIndex = 0;
 let questions = [];
-let userAnswers = []; 
-const flaggedQuestions = new Set(); 
+let userAnswers = [];
+const flaggedQuestions = new Set();
 
 function shuffleArray(data) {
   let currentIndex = data.length,
@@ -56,31 +56,22 @@ async function promises() {
 function displayQuestions() {
   const container = document.getElementById("exam-container");
   container.innerHTML = " ";
-   if (currentQuestionIndex === questions.length - 1) {
+  if (currentQuestionIndex === questions.length - 1) {
     nextBtn.disabled = true;
   } else {
-    nextBtn.disabled = false; 
+    nextBtn.disabled = false;
   }
   if (currentQuestionIndex === 0) {
     prevBtn.disabled = true;
   } else {
     prevBtn.disabled = false;
   }
-  
-  if (flaggedQuestions.has(currentQuestionIndex)) {
-    flagBtn.style.background = 'var(--danger-color)';
-    flagBtn.querySelector('i').style.color = 'white';
-  } else {
-    flagBtn.style.background = '#fff';
-    flagBtn.querySelector('i').style.color = 'var(--primary-color)';
-  }
 
   const q = questions[currentQuestionIndex];
   const questionDiv = document.createElement("div");
   questionDiv.classList.add("question-block");
-  const questionTitle = `<p><strong>Question ${
-    currentQuestionIndex + 1
-  }:</strong> ${q.question}</p>`;
+  const questionTitle = `<p><strong>Question ${currentQuestionIndex + 1
+    }:</strong> ${q.question}</p>`;
   const choiceHtml = q.choices
     .map((choice) => {
       return `<label>
@@ -99,9 +90,9 @@ function displayQuestions() {
     .forEach((input) => {
       input.addEventListener("change", (e) => {
         userAnswers[currentQuestionIndex] = e.target.value;
-        if(userAnswers.every(ans => ans !== null)){
+        if (userAnswers.every(ans => ans !== null)) {
           submitBtn.disabled = false;
-        }else{
+        } else {
           submitBtn.disabled = true;
         }
       });
@@ -121,7 +112,7 @@ flagBtn.addEventListener('click', () => {
     flagBtn.querySelector('i').style.color = 'white';
     showNotification('Question flagged', 'var(--danger-color)');
   }
-  
+
   updateFlaggedQuestionsList();
 });
 function updateFlaggedQuestionsList() {
@@ -148,7 +139,8 @@ function updateFlaggedQuestionsList() {
       </div>
     `;
     flaggedList.style.display = 'block';
-  } else {
+  } 
+  else {
     flaggedList.style.display = 'none';
   }
 }
@@ -175,7 +167,7 @@ function showNotification(message, color) {
   `;
   notification.innerHTML = `<i class="fas fa-flag"></i> ${message}`;
   document.body.appendChild(notification);
-  
+
   setTimeout(() => {
     notification.style.animation = 'fadeOut 0.3s ease';
     setTimeout(() => notification.remove(), 300);
@@ -198,55 +190,55 @@ document.getElementById("prev-btn").addEventListener("click", () => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-    promises(); 
-  });
+  promises();
+});
 
-  function calculateScore(){
-    let score =0;
-    questions.forEach((q,index)=>{
-      if(userAnswers[index]===q.correctAnswer ){
-        score++;
-      }
-    })
-    return score;
+function calculateScore() {
+  let score = 0;
+  questions.forEach((q, index) => {
+    if (userAnswers[index] === q.correctAnswer) {
+      score++;
+    }
+  })
+  return score;
+}
+
+document.getElementById("sub-btn").addEventListener("click", function () {
+  const score = calculateScore();
+  const percentage = Math.round((score / questions.length * 100));
+
+  localStorage.setItem("examScore", score);
+  localStorage.setItem("totalQuestions", questions.length);
+  localStorage.setItem("percentage", percentage);
+
+  clearInterval(countDown);
+
+
+  if (percentage >= 50) {
+    location.replace("../html/sucess.html");
+  } else {
+    location.replace("../html/failed.html")
   }
 
-  document.getElementById("sub-btn").addEventListener("click", function(){
-    const score =calculateScore();
-    const percentage= Math.round((score/questions.length *100));
 
-    localStorage.setItem("examScore" , score);
-    localStorage.setItem("totalQuestions", questions.length);
-    localStorage.setItem("percentage", percentage);
-    
-    clearInterval(countDown);
-
-    
-    if (percentage >= 50) {
-        location.replace("../html/sucess.html");
-    } else {
-      location.replace("../html/failed.html")
-    }
-
-    
-  });
+});
 /***************************************** */
- function enterFullscreen() {
+function enterFullscreen() {
   const element = document.documentElement;
   if (element.requestFullscreen) {
     element.requestFullscreen();
-  } else if (element.webkitRequestFullscreen) { 
+  } else if (element.webkitRequestFullscreen) {
     element.webkitRequestFullscreen();
-  } else if (element.msRequestFullscreen) { 
+  } else if (element.msRequestFullscreen) {
     element.msRequestFullscreen();
   }
 }
 
 function preventAllKeys(e) {
-  const isFullscreen = document.fullscreenElement || 
-                      document.webkitFullscreenElement || 
-                      document.msFullscreenElement;
-  
+  const isFullscreen = document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.msFullscreenElement;
+
   if (e.key === 'Escape' && isFullscreen) {
     e.preventDefault();
     const modal = document.getElementById('confirmExitModal');
@@ -257,48 +249,48 @@ function preventAllKeys(e) {
 function startQuiz() {
   document.getElementById('startScreen').style.display = 'none';
   document.querySelector('.exam-container').style.display = 'block';
-  
+
   enterFullscreen();
-  
+
   document.addEventListener('keydown', preventAllKeys);
-  
+
   document.getElementById('cancelExitBtn').addEventListener('click', () => {
     document.getElementById('confirmExitModal').style.display = 'none';
   });
-  
+
   document.getElementById('confirmExitBtn').addEventListener('click', () => {
     finishQuiz();
   });
 }
 function finishQuiz() {
   document.removeEventListener('keydown', preventAllKeys);
-  
+
   document.getElementById('confirmExitModal').style.display = 'none';
-  
+
   if (document.exitFullscreen) {
     document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) { 
+  } else if (document.webkitExitFullscreen) {
     document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { 
+  } else if (document.msExitFullscreen) {
     document.msExitFullscreen();
   }
 }
 function handleKeyPress(e) {
-if (document.fullscreenElement || 
-  document.webkitFullscreenElement || 
-  document.mozFullScreenElement ||
-  document.msFullscreenElement) {
+  if (document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.mozFullScreenElement ||
+    document.msFullscreenElement) {
 
-if (e.key === 'Escape' || e.keyCode === 27) {
-  e.preventDefault();
-  e.stopPropagation();
-  
-    endQuiz();
-  
-  
-  return false;
-}
-}
+    if (e.key === 'Escape' || e.keyCode === 27) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      endQuiz();
+
+
+      return false;
+    }
+  }
 }
 
 document.addEventListener('fullscreenchange', handleFullscreenChange);
@@ -307,30 +299,30 @@ document.addEventListener('mozfullscreenchange', handleFullscreenChange);
 document.addEventListener('MSFullscreenChange', handleFullscreenChange);
 
 function handleFullscreenChange() {
-if (
-!document.fullscreenElement &&
-!document.webkitFullscreenElement &&
-!document.mozFullScreenElement &&
-!document.msFullscreenElement
-) {
+  if (
+    !document.fullscreenElement &&
+    !document.webkitFullscreenElement &&
+    !document.mozFullScreenElement &&
+    !document.msFullscreenElement
+  ) {
 
-document.getElementById('confirmExitModal').style.display = 'flex';
-}
+    document.getElementById('confirmExitModal').style.display = 'flex';
+  }
 }
 
 document.getElementById('confirmExitBtn').addEventListener('click', () => {
-endQuiz();
+  endQuiz();
 });
 
 document.getElementById('cancelExitBtn').addEventListener('click', () => {
-document.getElementById('confirmExitModal').style.display = 'none';
+  document.getElementById('confirmExitModal').style.display = 'none';
 
-const elem = document.documentElement;
-if (elem.requestFullscreen) {
-elem.requestFullscreen();
-} else if (elem.webkitRequestFullscreen) {
-elem.webkitRequestFullscreen();
-}
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen();
+  }
 });
 
 document.addEventListener('fullscreenchange', handleFullscreenChange);
@@ -342,23 +334,23 @@ document.getElementById('startButton').addEventListener('click', startQuiz);
 
 function endQuiz() {
   const score = calculateScore();
-  const percentage = Math.round((score/questions.length * 100));
+  const percentage = Math.round((score / questions.length * 100));
 
   localStorage.setItem("examScore", score);
   localStorage.setItem("totalQuestions", questions.length);
   localStorage.setItem("percentage", percentage);
-  
+
   clearInterval(countDown);
-  
+
   document.removeEventListener('keydown', preventAllKeys);
-  
+
   document.getElementById('confirmExitModal').style.display = 'none';
-  
+
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.webkitExitFullscreen) {
     document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { 
+  } else if (document.msExitFullscreen) {
     document.msExitFullscreen();
   }
 
@@ -369,4 +361,3 @@ function endQuiz() {
   }
 }
 
- 

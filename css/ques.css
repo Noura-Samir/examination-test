@@ -24,22 +24,23 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh; 
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text-color);
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .container {
-    width: 90%; 
+    width: 90%;
     max-width: 420px;
     padding: 3rem;
     background-color: var(--container-bg);
     border-radius: 20px;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(85, 211, 255, 0.5);
+    position: relative;
 }
 
 .exam-container {
@@ -58,14 +59,16 @@ body {
     letter-spacing: 2px;
 }
 
-h1, h2 {
+h1,
+h2 {
     text-align: center;
     margin-bottom: 0.5rem;
     color: var(--text-color);
     font-size: 1.5rem;
 }
 
-.form-group, .input-group {
+.form-group,
+.input-group {
     margin-bottom: 0.5rem;
 }
 
@@ -189,6 +192,7 @@ input:focus {
     margin-bottom: 0.5rem;
 }
 
+
 button {
     padding: 0.7rem;
     background-color: #126688;
@@ -234,37 +238,29 @@ button:hover {
     transition: all 0.3s ease;
 }
 
-.flag-btn:hover {
-    background-color: rgba(77, 166, 255, 0.15);
-    transform: translateY(-3px) rotate(10deg);
-    box-shadow: 0 6px 20px rgba(77, 166, 255, 0.5);
-}
-
-.flag-btn.active {
-    background-color: #ff4444;
-    border-color: #ff4444;
-    color: white;
-    box-shadow: 0 6px 20px rgba(255, 68, 68, 0.5);
-}
-
-.flag-btn.active i {
-    color: white;
-}
-
-.flag-btn.active:hover {
-    background-color: #ff6b6b;
-    box-shadow: 0 6px 25px rgba(255, 68, 68, 0.6);
-    transform: translateY(-3px) rotate(-10deg);
-}
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeOut {
-    from { opacity: 1; transform: translateY(0); }
-    to { opacity: 0; transform: translateY(-10px); }
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
 }
 
 button:disabled {
@@ -477,59 +473,134 @@ button:disabled {
         max-width: 90%;
         padding: 1.5rem;
     }
-    
+
     .container {
         width: 95%;
         padding: 2rem;
     }
-    
+
     .question-content {
         min-height: 120px;
     }
-    
+
     .button-group {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
     }
-    
+
+    .button-group .submit-btn {
+        grid-column: span 2 ;
+        width: 100% ;
+    }
+
     .question-block label {
         padding: 0.4rem;
     }
+    
+  .modal-content {
+    width: 78%;
+    padding: 15px;
+    border-radius: 6px;
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+  }
+
+  .modal-icon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .modal-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal-button + .modal-button {
+    margin-top: 10px;
+  }
 }
+
 
 @media (max-width: 480px) {
     .exam-container {
         max-width: 95%;
         padding: 1rem;
     }
-    
+
     .container {
         width: 98%;
         padding: 1rem;
     }
-    
+
     .question-content {
         padding: 0.8rem;
         min-height: 100px;
     }
-    
+
     .button-group {
-        grid-template-columns: 1fr;
-        gap: 0.4rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
     }
-    
+
+    .button-group .submit-btn {
+        grid-column: span 2 ;
+        width: 100% ;
+    }
+
     .timer {
         font-size: 1.2rem;
     }
-    
-    h1, h2 {
+
+    h1,h2 {
         font-size: 1.3rem;
     }
-    
+
     .logo {
         font-size: 1.3rem;
     }
-    
+
     .question-block p {
         font-size: 0.9rem;
     }
+   
+  .modal-content {
+    width: 80%;
+    padding: 15px;
+    border-radius: 6px;
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+  }
+
+  .modal-icon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .modal-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .modal-button + .modal-button {
+    margin-top: 10px;
+  }
 }
+

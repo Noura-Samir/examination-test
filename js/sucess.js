@@ -11,3 +11,10 @@ const score = localStorage.getItem("examScore");
 
       scoreText.textContent = `score:${score} from ${total}`;
       percentageText.textContent = `Percentage: ${percent}%`;
+
+      document.getElementById("try-again-btn").addEventListener("click", function(){
+    location.replace("../html/ques.html");   
+       })
+     document.getElementById("home-btn").addEventListener("click", function(){
+    location.replace("../index.html");
+           })

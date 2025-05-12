@@ -18,7 +18,7 @@
 }
 
 body {
-    background-image: url(..img/bg.jpg);
+    background-image: url(../img/bg.jpg);
     background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -152,6 +152,28 @@ body {
             color: var(--failed-color);
             text-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
         }
+        button {
+    width: 100%;
+    padding: 0.9rem;
+    background-color:  #126688;
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.8rem;
+}
+
+button:hover {
+    background-color:#66CEFF;
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.4);
+}
+
+
+
+
 
 @media (max-width: 768px) {
     .result-container {
